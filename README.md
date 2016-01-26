@@ -14,7 +14,7 @@ $db = new Db('hostname', 'database', 'user', 'password');
 
 ## Select where
 ```php
-$posts = $db->table('posts')->where('post_author', '=', 1)->get();
+$posts = $db->table('posts')->where('author', '=', 1)->get();
 ```
 If no results then get returns empty array. So make sure you check if the result is empty before using it.
 ```php
