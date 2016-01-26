@@ -9,13 +9,12 @@ require 'db.php';
 
 ## Create instance of the db class
 ```php
-//create new instance of the class
-$db = new Db('hostname','database','user','password');
+$db = new Db('hostname', 'database', 'user', 'password');
 ```
 
 ## Select where
 ```php
-$posts = $db->table('posts')->where('post_author','=',1)->get();
+$posts = $db->table('posts')->where('post_author', '=', 1)->get();
 ```
 If no results then get returns empty array. So make sure you check if the result is empty before using it.
 ```php
@@ -30,17 +29,17 @@ if( !empty($posts) ) {
 
 ## Select with multiple where
 ```php
-$posts = $db->table('posts')->where('author','=',1)->where('post_date','>','2015-02-01')->get();
+$posts = $db->table('posts')->where('author', '=', 1)->where('post_date', '>', '2015-02-01')->get();
 ```
 
 ## Select where with limit
 ```php
-$posts = $db->table('posts')->where('author','=',1)->get(5);
+$posts = $db->table('posts')->where('author', '=', 1)->get(5);
 ```
 
 ## Select where with limit and offset
 ```php
-$posts = $db->table('posts')->where('author','=',1)->get(5,5);
+$posts = $db->table('posts')->where('author', '=', 1)->get(5,5);
 ```
 
 ## Select all
@@ -51,29 +50,29 @@ $posts = $db->table('posts')->get();
 ## Select first
 ```php
 $posts = $db->table('posts')->first();
-$posts = $db->table('posts')->where('author','=',1)->first();
+$posts = $db->table('posts')->where('author', '=', 1)->first();
 //if no results found first will return empty array
 ```
 
 ## Select count
 ```php
 $total_posts = $db->table('posts')->count();
-$total_posts = $db->table('posts')->where('author','=',1)->count();
+$total_posts = $db->table('posts')->where('author', '=', 1)->count();
 ```
 
 ## Select where in
 ```php
-$posts = $db->table('posts')->whereIn('author',[1,5])->get(5);
+$posts = $db->table('posts')->whereIn('author', [1,5])->get(5);
 ```
 
 ## Select where like
 ```php
-$posts = $db->table('posts')->where('title','LIKE','%hello%')->get(5);
+$posts = $db->table('posts')->where('title', 'LIKE', '%hello%')->get(5);
 ```
 
 ## Select where between
 ```php
-$posts = $db->table('posts')->whereBetween('post_date',['2015-01-01 00:00:00','2016-12-31 00:00:00'])->get();
+$posts = $db->table('posts')->whereBetween('post_date', ['2015-01-01 00:00:00','2016-12-31 00:00:00'])->get();
 ```
 
 ## Insert
@@ -87,14 +86,14 @@ $insert_id = $db->table('posts')->insert([
 ## Update
 ```php
 //update query will always return no of affected rows
-$no_of_updated_rows = $db->table('posts')->where('title','=','Sample Title')->update([
+$no_of_updated_rows = $db->table('posts')->where('title', '=', 'Sample Title')->update([
                                                                                 'content' => 'Updated text'
                                                                                 ]);
 
 ```
 ## Delete
 ```php
-$no_of_deleted_rows = $db->table('posts')->where('title','=','Sample Title')->delete();
+$no_of_deleted_rows = $db->table('posts')->where('title', '=', 'Sample Title')->delete();
 
 //this will delete all rows from posts table
 $no_of_deleted_rows = $db->table('posts')->delete();
@@ -105,7 +104,7 @@ $no_of_deleted_rows = $db->table('posts')->delete();
 $results = $db->sel("SELECT * FROM A LEFT JOIN B ON A.batch_id = B.id");
 
 //raw query with bind parameters
-$results = $db->sel("SELECT * FROM A LEFT JOIN B ON A.batch_id = B.id WHERE A.name = ? AND B.batch_name = ?",[$name,$batch_name]);
+$results = $db->sel("SELECT * FROM A LEFT JOIN B ON A.batch_id = B.id WHERE A.name = ? AND B.batch_name = ?",[$name, $batch_name]);
 ```
 
 ## Select specific columns
